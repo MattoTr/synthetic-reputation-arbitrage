@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arbitrage-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arbitrage-engine
+  template:
+    metadata:
+      labels:
+        app: arbitrage-engine
+    spec:
+      containers:
+      - name: arbitrage-engine
+        image: your-cloud-repo/arbitrage-engine:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: REDIS_HOST
+          value: redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arbitrage-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: arbitrage-engine
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
