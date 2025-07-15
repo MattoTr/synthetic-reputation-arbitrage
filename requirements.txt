@@ -1,0 +1,7 @@
+web3
+aave-python
+redis
+schedule
+eth-account
+ceramic-client
+python-decouple
