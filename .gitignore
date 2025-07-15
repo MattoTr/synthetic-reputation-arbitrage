@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+secrets/
+
+# Terraform / Kubernetes
+*.tfstate
+*.tfstate.backup
+.kube/
